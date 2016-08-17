@@ -27,3 +27,4 @@ service/target
 performance/target
 velocity.log
 nohup.out
+.DS_Store

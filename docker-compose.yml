@@ -1,0 +1,21 @@
+elasticsearch:
+    build: docker/elasticsearch
+    hostname: elasticsearch
+    ports:
+        - "9200:9200"
+        - "9300:9300"
+
+rabbitmq:
+    build: docker/rabbitmq
+    hostname: rabbitmq
+    command: rabbitmq-server start
+    ports:
+        - "5672:5672"
+        - "15672:15672"
+
+logstash:
+    build: docker/logstash
+    hostname: logstash
+    links:
+        - "rabbitmq:rabbitmq"
+        - "elasticsearch:rabbitmq"
